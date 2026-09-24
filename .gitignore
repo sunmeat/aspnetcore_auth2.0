@@ -1,0 +1,36 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build
+[Bb]in/
+[Oo]bj/
+
+# Test results
+TestResults/
+*.trx
+
+# Rider / JetBrains
+.idea/
+*.DotSettings.user
+
+# Logs
+*.log
+
+# Local configuration
+appsettings.Local.json
+appsettings.*.Local.json
+
+# Firebase / Google credentials
+/Soccer.Infrastructure/firebase.json
+
+# Environment files
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db

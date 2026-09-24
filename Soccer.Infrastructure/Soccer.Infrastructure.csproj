@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Cloud.Firestore" Version="4.4.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      Infrastructure посилається лише на Domain: їй потрібні сутності (Player, Team)
+      та контракти (IRepository, IUnitOfWork), які вона реалізує через EF Core.
+      Про Application чи Presentation вона нічого не знає — це і є інверсія залежностей.
+      
+                   ┌──────────────────┐
+                   │   Presentation   │
+                   └───────┬──░───────┘
+                           │  ░
+             ┌─────────────┘  ░ (тільки для DI)
+             │                ░
+             ▼                ▼
+    ┌──────────────────┐  ┌──────────────────┐
+    │   Application    │  │  Infrastructure  │
+    └────────┬─────────┘  └─────────┬────────┘
+             │                      │
+             └───────────┬──────────┘
+                         │
+                         ▼
+            ┌────────────────────────┐
+            │         Domain         │  (Центр)
+            └────────────────────────┘
+    -->
+    <ProjectReference Include="..\Soccer.Domain\Soccer.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
